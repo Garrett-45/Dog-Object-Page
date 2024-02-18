@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 99vh;
+}
+
+:root {
+    --header-footer-color: #0F1035;
+    --sidebar-color: #7FC7D9;
+    --navbar-color: #365486;
+    --background-color: #DCF2F1;
+}
+
+.page-container {
+    display: grid;
+    grid-template-rows: 80px 60px 3fr 50px;
+    grid-template-columns: 1fr 4fr 1fr;
+    height: 99vh;
+}
+
+.header, .footer {
+    background-color: var(--header-footer-color);
+    color: var(--background-color)
+}
+
+.header {
+    grid-row: 1 / 2;
+    grid-column: 1 / 4;
+    background-color: var(--header-footer-color);
+    display: grid;
+}
+
+
+
+ul.header-list-items {
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding-right: 15px;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr .7fr .3fr;
+}
+
+li.dog-days-logo {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    padding-left: 15px;
+}
+
+li.my-business-name {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    justify-self: center;
+    font-size: 3rem;
+}
+
+li.home-search-bar {
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+    justify-self: end;
+}
+
+input[type="search"] {
+    outline: none;
+    border-radius: 10px;
+    text-align: center;
+}
+
+fieldset {
+    outline: none;
+    border-radius: 10px;
+    border-color: var(--header-footer-color);
+    border-style: hidden;
+}
+
+li.profile-gateway-image {
+    grid-row: 1 / 2;
+    grid-column: 4 / 5;
+    justify-self: end;
+}
+
+.top-nav-bar {
+    grid-row: 2 / 3;
+    grid-column: 2 / 4;
+    background-color: var(--navbar-color);
+    display: grid;
+    align-content: space-around;
+    border-radius: 5px;
+    margin: .5em 2em .5em;
+    box-sizing: border-box;
+    min-width: max-content;
+}
+
+/* **********************Top nav bar styling **************************/
+
+.top-nav-bar-container {
+    background-color: var(--background-color);
+    padding-bottom: 1em;
+}
+
+ul.top-nav-items-ul {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(6, minmax(4em, 9em));
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    gap: 1em;
+    margin: .5rem
+    /* overflow: visible; */
+}
+
+li.top-nav-buttons {
+    background-color: var(--background-color);
+    /* margin: 1em 3em; */
+    border-radius: 1em;
+    padding: .4em 1em;
+    min-width: 3em
+}
+
+li#home-nav-button:hover {
+    background-color: white;
+}
+
+
+li#calendar-nav-dogs {
+    background-color: rgb(53, 85, 85);
+    color: var(--background-color);
+    border: solid;
+}
+
+/* Side nav bar styling */
+
+.side-nav-bar {
+    grid-row: 2/4;
+    grid-column: 1 / 2;
+    background-color: var(--sidebar-color);
+    padding-top: 4em;
+    padding-left: 1em;
+    margin: 10px;
+    border-radius: 3px;
+    min-width: max-content;
+}
+
+
+
+/* Accomodate any amount of added dog cards into a grid layout */
+
+.dog-add-remove-area {
+    grid-row: 3 / 4;
+    grid-column: 2 / 4;
+    background-color: white;
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(12em, 12em));
+    grid-template-columns: repeat(auto-fit, minmax(12em, 12em));
+    gap: .4em;
+    overflow: auto;
+    margin-bottom: 1em;
+}
+
+.summary-cards {
+    background-color: var(--background-color);
+    border: solid 2px var(--navbar-color);
+    box-shadow: inset 2px 2px 4px var(--navbar-color);
+
+}
+
+
+ul.side-nav-items-ul {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: 1fr;
+    gap: 1em;
+    padding-top: 4em;
+}
+
+ul.side-nav-items-ul li {
+    background-color: white;
+    margin-right: 2em;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    border-radius: 10px;
+    min-width: 12em;
+    min-height: 3em;
+    font-size: .8rem;
+    font-weight: bold;
+    color: var(--header-footer-color);
+}
+
+
+.footer {
+    grid-row: 4 / 5;
+    grid-column: 1 / 4;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+ul {
+    list-style: none;
+}
+
+#dog-days-logo-img {
+    height: 50px;
+    width: 50px;
+}
+
+#profile-gateway-image-img {
+    height: 50px;
+    width: 50px;
+}
+
+/* Form styling */
+
+#dialog, #dog-removal-confirmation-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 8rem;
+    border-radius: 2rem;
+    border-width: .1rem;
+    background-color: var(--background-color);
+    color: var(--header-footer-color);
+}
+
+form {
+    min-width: max-content;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./stylesheet.css">
+        <script src="./scripts.js" async defer></script>
+    </head>
+    <body>
+        <div class="page-container">
+        <dialog id="dog-removal-confirmation-dialog">
+            <p>Are you sure you want to remove this dog?</p>
+            <button id="dog-removal-confirmation-yes-button">Yes, remove</button>
+            <button id="dog-removal-confirmation-no-button">Don't remove</button>
+        </dialog>
+
+        <dialog id="dialog">
+            <form id="dog-add-form">
+                <ul>
+                    <li>
+                        <label for="dogs-name-input">Your pet's name:</label>
+                        <input type="text" placeholder="Enter Dog's Name Here" id="dogs-name-input" name="dogs-name">
+                    </li>
+                    <li>
+                        <label for="dogs-birthday-input">Your pet's birthday:</label>
+                        <input type="date" id="dogs-birthday-input" name="pets-birthday">
+                    </li>
+                    <li>
+                        <label for="dogs-breed-input">Your pet's breed:</label>
+                        <input type="text" placeholder="Enter breed information here" id="dogs-breed-input" name="pets-breed">
+                    </li>
+                    <li>
+                        <label for="dog-notes-input">Additional notes</label>
+                        <input type="text" placeholder="Enter notes here" id="dog-notes-input" name="pets-notes">
+                    </li>
+                </ul>
+            </form>
+
+            <button id="submit-btn">Create dog</button>
+
+        </dialog>
+            <div class="header">
+                <ul class="header-list-items">
+                    <li class="dog-days-logo">
+                        <img src="./logo-no-background.png" alt="" id="dog-days-logo-img">
+                    </li>
+                    <li class="my-business-name">
+                        <header>My Business Name</header>
+                    </li>
+                    <li class="home-search-bar">
+                        <fieldset>
+                            <form action="placeholder">
+                                <input type="search" placeholder="search">
+                            </form>
+                        </fieldset>
+                    </li>
+                    <li class="profile-gateway-image">
+                        <img src="./profile-image-placeholder.jpg" alt="" id="profile-gateway-image-img">
+                    </li>
+                </ul>
+            </div>
+            <div class="top-nav-bar">
+                <ul class="top-nav-items-ul">
+                    <li class="top-nav-buttons" id="home-nav-button"> <a href="">Home</a></li>
+                    <li class="top-nav-buttons" id="calendar-nav-button">Calendar</li>
+                    <li class="top-nav-buttons" id="dogs-nav-button">Dogs</li>
+                    <li class="top-nav-buttons">Services</li>
+                    <li class="top-nav-buttons">Reports</li>
+                    <li class="top-nav-buttons">Team</li>
+                </ul>
+            </div>
+            <div class="side-nav-bar">
+                <ul class="side-nav-items-ul">
+                    <li id="dog-add-btn">Add Dog</li>
+                    <li id="dog-remove-btn">Remove Dog</li>
+                    <li id="dog-update-btn">Update Dog</li>
+                </ul>
+            </div>
+            <div class="dog-add-remove-area" id="dog-add-remove-area">
+                <!-- <div class="summary-cards" id="dog-card-example">Otis</div> -->
+                <!-- <div class="summary-cards" id="dog-card-example">Loki</div>
+                <div class="summary-cards" id="dog-card-example">Odin</div>
+                <div class="summary-cards" id="dog-card-example">Bo</div>
+                <div class="summary-cards" id="dog-card-example">Nobi</div>
+                <div class="summary-cards" id="dog-card-example">Lolo</div>
+                <div class="summary-cards" id="dog-card-example">Chloe</div>
+                <div class="summary-cards" id="dog-card-example">Beebers</div> -->
+                
+            </div>
+            <div class="footer">Dog Days</div>
+
+        </div>
+
+
+    </body>
+</html>
