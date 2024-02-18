@@ -36,10 +36,23 @@ function Dog(name, birthday, breed, notes, inhouseStatus) {
         return `${this.birthdayMonth}-${this.birthdayDay}-${this.birthdayYear}`
     }
     this.age = function() {
-        let formattedBirthdayforYear = this.birthday.getFullYear()
         let today = new Date()
+
+        let birthdayYear = this.birthday.getFullYear()
         let todayYear = today.getFullYear()
-        return todayYear - formattedBirthdayforYear
+        
+        let birthdayMonth = this.birthday.getMonth()
+        let todayMonth = today.getMonth()
+
+        let yearsOld = todayYear - birthdayYear
+        let monthsOld = todayMonth - birthdayMonth
+
+        let calculatedAgeInMonths = (todayYear - birthdayYear) * 12 + (monthsOld)
+
+        let calculatedYears = Math.floor(calculatedAgeInMonths / 12)
+        let calculatedMonths = Math.floor(calculatedAgeInMonths - (calculatedYears * 12))
+        
+        return `${calculatedYears} years and ${calculatedMonths} months old`
     };
     this.breed = breed;
     this.notes = notes;
