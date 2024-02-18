@@ -17,10 +17,12 @@ const dogRemovalDialogNoBtn = document.getElementById("dog-removal-confirmation-
 
 const ourDogs = []
 
+// Dog addition form input elements
 let dogsName = document.querySelector("#dogs-name-input")
 let dogsBirthday = document.querySelector("#dogs-birthday-input")
 let dogsBreed = document.querySelector("#dogs-breed-input")
 let dogNotes = document.querySelector("#dog-notes-input")
+let dogBoardingStatus = document.querySelector("#dog-inhouse-status")
 
 const cardSubmitbtn = document.querySelector("#submit-btn")
 
@@ -66,7 +68,7 @@ Dog.prototype.makeCard = function(index) {
     const dogIndex = ourDogs[index]
     let dogAge = this.age()
     let displayedBirthday = this.displayBirthday()
-    const dogArray = [this.name, displayedBirthday, dogAge, this.breed, this.notes]
+    const dogArray = [this.name, displayedBirthday, dogAge, this.breed, this.notes, this.inhouseStatus]
     const newDogCard = document.createElement('div')
     newDogCard.classList.add("summary-cards")
     newDogCard.setAttribute('data-index', index)
@@ -75,6 +77,11 @@ Dog.prototype.makeCard = function(index) {
     removeDogbtn.setAttribute('data-index', index)
     removeDogbtn.setAttribute('class', 'dog-remove-btn')
     removeDogbtn.textContent = "Remove Dog"
+
+    const dogGuestStatus = document.createElement('button')
+    dogGuestStatus.setAttribute('data-index', index)
+    dogGuestStatus.setAttribute('class', 'dog-guest-status')
+    dogGuestStatus.textContent = "Change guest status"
     
     for (let i = 0; i < dogArray.length; i++) {
         let listItem = document.createElement('li')
@@ -83,9 +90,11 @@ Dog.prototype.makeCard = function(index) {
     }
     
     newDogCard.appendChild(removeDogbtn)
+    newDogCard.appendChild(dogGuestStatus)
     cardArea.appendChild(newDogCard)
 
     removeDogbtn.addEventListener('click', showDogRemovalConfirmation)
+    dogGuestStatus.addEventListener('click', changeDogGuestStatus)
 }
 
 
@@ -108,7 +117,7 @@ function refreshCards() {
 
 cardSubmitbtn.addEventListener('click', (event) => {
     event.preventDefault()
-    let dog = new Dog(dogsName.value, dogsBirthday.value, dogsBreed.value, dogNotes.value)
+    let dog = new Dog(dogsName.value, dogsBirthday.value, dogsBreed.value, dogNotes.value, dogBoardingStatus.value)
 
     ourDogs.push(dog)
     refreshCards()
@@ -153,6 +162,21 @@ function handleDogRemovalNotConfirmed() {
     dogRemovalDialogEl.close()
 }
 
+function changeDogGuestStatus() {
+    let currentDogIndex = this.getAttribute('data-index')
+    let currentDog = ourDogs[currentDogIndex]
+
+    if (currentDog.inhouseStatus === "Currently a guest") {
+        currentDog.inhouseStatus = "Not currently a guest"
+        refreshCards()
+        displayDogs()
+    } else {
+        currentDog.inhouseStatus = "Currently a guest"
+        refreshCards()
+        displayDogs()
+    }
+
+}
 
 
 /* ************************* Test Area *********************** */
