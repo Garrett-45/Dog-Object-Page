@@ -26,12 +26,24 @@ const cardSubmitbtn = document.querySelector("#submit-btn")
 
 // Create prototype for dogs
 
-function Dog(name, birthday, breed, notes) {
+function Dog(name, birthday, breed, notes, inhouseStatus) {
     this.name = name;
     this.birthday = new Date(birthday)
-    this.age = function ageCalc(birthday){};
+    this.birthdayDay = this.birthday.getDate()
+    this.birthdayMonth = this.birthday.getMonth()
+    this.birthdayYear = this.birthday.getFullYear()
+    this.displayBirthday = function() {
+        return `${this.birthdayMonth}-${this.birthdayDay}-${this.birthdayYear}`
+    }
+    this.age = function() {
+        let formattedBirthdayforYear = this.birthday.getFullYear()
+        let today = new Date()
+        let todayYear = today.getFullYear()
+        return todayYear - formattedBirthdayforYear
+    };
     this.breed = breed;
     this.notes = notes;
+    this.inhouseStatus = inhouseStatus
 }
 
 // Function to create a new card on the card summary page for a dog
@@ -39,8 +51,9 @@ function Dog(name, birthday, breed, notes) {
 Dog.prototype.makeCard = function(index) {
 
     const dogIndex = ourDogs[index]
-
-    const dogArray = [this.name, this.breed, this.notes]
+    let dogAge = this.age()
+    let displayedBirthday = this.displayBirthday()
+    const dogArray = [this.name, displayedBirthday, dogAge, this.breed, this.notes]
     const newDogCard = document.createElement('div')
     newDogCard.classList.add("summary-cards")
     newDogCard.setAttribute('data-index', index)
@@ -82,7 +95,8 @@ function refreshCards() {
 
 cardSubmitbtn.addEventListener('click', (event) => {
     event.preventDefault()
-    let dog = new Dog(dogsName.value, "2020-01-01", dogsBreed.value, dogNotes.value)
+    let dog = new Dog(dogsName.value, dogsBirthday.value, dogsBreed.value, dogNotes.value)
+
     ourDogs.push(dog)
     refreshCards()
     dialogElement.close()
@@ -126,12 +140,19 @@ function handleDogRemovalNotConfirmed() {
     dogRemovalDialogEl.close()
 }
 
+
+
 /* ************************* Test Area *********************** */
+
+
 
 // dogRemovalDialogEl.showModal()
 
 
-// let dog1 = new Dog("Jazzy", "2014-03-02", "Big Bellied Potato Shark", "This is a sweet baby")
+// let dog1 = new Dog("Jazzy", "2014-03-02", "Big Bellied Potato Shark", "This is a sweet baby", true)
+
+// console.log(dog1.age())
+
 // let dog2 = new Dog("Odin", "2019-01-01", "Comedian", "Such a silly velvet pastrami")
 
 // function(e) {
