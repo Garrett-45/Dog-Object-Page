@@ -59,7 +59,7 @@ Dog.prototype.makeCard = function(index) {
     newDogCard.appendChild(removeDogbtn)
     cardArea.appendChild(newDogCard)
 
-    removeDogbtn.addEventListener('click', removeDogClickHandler)
+    removeDogbtn.addEventListener('click', showDogRemovalConfirmation)
 }
 
 
@@ -106,6 +106,25 @@ function removeDogClickHandler() {
     refreshCards()
     displayDogs()
 }}
+
+function showDogRemovalConfirmation() {
+    dogRemovalDialogEl.showModal()
+    dogRemovalDialogYesBtn.setAttribute('data-index', this.getAttribute('data-index'))
+    dogRemovalDialogYesBtn.addEventListener('click', handleDogRemovalConfirmation)
+    dogRemovalDialogNoBtn.addEventListener('click', handleDogRemovalNotConfirmed)
+}
+
+function handleDogRemovalConfirmation() {
+    const currentDogIndex = this.getAttribute('data-index')
+    ourDogs.splice(currentDogIndex, 1)
+    dogRemovalDialogEl.close()
+    refreshCards()
+    displayDogs()
+}
+
+function handleDogRemovalNotConfirmed() {
+    dogRemovalDialogEl.close()
+}
 
 /* ************************* Test Area *********************** */
 
